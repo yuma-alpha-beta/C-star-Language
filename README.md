@@ -61,5 +61,80 @@ Since I am still a beginner and don't have the deep knowledge to build a full co
 * Do you think this "Row-Level Interoperability" with `(+)` annotations is possible?
 * How can we improve the "3-Safety Checks" or the "2-Stage Error UI"?
 
-I would love to get opinions, advice, and feedback from experienced compiler engineers, C++/Rust developers, and anyone who loves programming! Let's talk in the Discussions tab!
+I would love to get opinions, advice, and feedback from experienced compiler engineers, C++/Rust developers, and anyone who loves programming! Let's talk in the Discussions
+## 💻 Code Examples (Interoperability & Core Syntax)
+
+### 1. Unified Multi-Variable Input & Calculation
+C* eliminates the risk of uninitialized variable bugs by combining declaration and user input into a single, intuitive line.
+```c
+#include <cstar>
+
+void main() {
+    int input(x);          // Instantly declares 'x' and takes user input Safely
+    print(x * x * x "\n"); // Clean string concatenation for cubed results
+}
+```
+
+### 2. Intuitive Relational Chaining (if)
+No more messy `&&` operators for simple range checks. C* allows direct mathematical chaining for high readability.
+```c
+#include <cstar>
+
+void main() {
+    int input(a, b, c); // Declares 3 variables and takes their inputs simultaneously in 1 line!
+
+    // Natural mathematical expression
+    if (a > b > c) {
+        print("a is the largest\n");
+    }
+}
+```
+
+### 3. Zero-Overhead Zero-Copy Data Sharing (Memory Address Bridge)
+C* shares variable memory addresses (`x`) directly with the C++ linkage under the hood, enabling lightning-fast, zero-overhead interoperability without any data copying.
+```cpp
+extern "C++, C*" 
+#include <iostream> 
+
+int main() { 
+    int input(x);   // Variable allocated in C*
+    std::cout << x; // C++ row accesses the exact same memory address instantly!
+}
+```
+
+### 4. Injecting C* into C++ (Row-Level Rewriting)
+By declaring `extern "C++, C*"`, you can insert safe, simple C* lines (like `print`) directly inside an existing C++ file environment.
+```cpp
+extern "C++, C*" 
+#include <iostream> 
+
+int main() { // C++ Context
+    print("Hello World\n"); // C* Line executed safely inside C++
+}
+```
+
+### 5. Injecting C++ into C* (Reverse Compatibility)
+Alternatively, from a C* file, you can call native C++ low-level stream operations using `extern "C*, C++"` whenever you need legacy library access.
+```cpp
+extern "C*, C++" 
+#include <cstar> 
+
+int main() { // C* Context
+    std::cout << "Hello World\n"; // Native C++ Line executed smoothly inside C*
+}
+```
+
+### 6. Simplified Loop Increments (for)
+Reduces cognitive friction for beginners and experts alike by replacing ambiguous operators with clear intent.
+```c
+#include <cstar>
+
+void main() {
+    // Highly visible '1+' increment syntax
+    for (int i; i < 9; 1+) { 
+        print("Hello\n");
+    }
+}
+```
+ tab!
 
